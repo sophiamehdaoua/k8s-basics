@@ -1,8 +1,8 @@
 The back end rest application is running and is accessible to the kubernetes cluster via its service definition `nationalparks-py`. 
 
-The national parks data is held in a mongodb database which you deployed as the very first step in this workshop.
+The national parks data is held in a mongodb database which you deployed earlier.
 
-This database is useful as it ensures that the data is available to all replicas of the national parks rest service and of course is available to any other application requiring national parks information.
+This database is useful as it ensures that the data is available to all replicas of the national parks rest service, and of course is available to any other application requiring national parks information.
 
 To view the resources for the database, run:
 
@@ -32,7 +32,7 @@ type:
 kubectl apply -f backend-v2/
 ----
 
-If you go back to parksmap application in yout browser and refresh the screen, you should notice that the application appears to be hanging, similar to the picture below.
+If you go back to parksmap application in your browser and refresh the screen, you should notice that the application appears to be hanging, similar to the picture below.
 
 image::broken-parksmap.png[Broken Parksmap, 900]
 
@@ -49,7 +49,7 @@ This is a common problem for any application. The need to provide environment sp
 
 * Environment variables (defined in the deployment)
 * Configmaps (externalised configuration)
-* Secrets (externalised configuration that can be store in a secret vault)
+* Secrets (externalised configuration that can be stored in a secret vault)
 
 Externalising configuration is best, storing the configuration in a seperate yaml file means that the deployment doesn't need to change between environments.
 
@@ -99,7 +99,7 @@ The output should like this:
 DB_URI=mongodb-community-server
 ----
 
-If you are unsure if this has worked successfully, you can execute a command in the running container to print the environment variable. We learned this earlier.
+If you are unsure if this has worked successfully, you can execute a command in the running container to print the environment variable. We learnt this earlier.
 
 [.console-input]
 [source,execute]
@@ -193,7 +193,7 @@ For these, the `spec.template.spec.containers.env` setting would need to be upda
 You can see how the `env` will be changed to extract values from the secret.
 
 
-Apply the change by executing the following command (not forgetting that best practise would be to update the deployment yaml file):
+Apply the change by executing the following command (not forgetting that best practice would be to update the deployment yaml file):
 
 [.console-input]
 [source,execute]
@@ -203,8 +203,8 @@ kubectl set env deployment/nationalparks-py --from secret/mongodb-nationalparks-
 
 You should see the following output:
 
-[.console-input]
-[source,execute]
+[.console-output]
+[source]
 ----
 Warning: key database-password transferred to DATABASE_PASSWORD
 Warning: key database-user transferred to DATABASE_USER
